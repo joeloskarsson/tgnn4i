@@ -1,0 +1,44 @@
+program: main.py
+name: ushcn_periodic_seeded
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "tgnn4i"
+    dataset:
+        values:
+            - "ushcn_tmin_10nn"
+            - "ushcn_tmax_10nn"
+
+    seed:
+        values:
+            - 913
+            - 914
+            - 915
+            - 916
+            - 917
+
+    periodic:
+        value: 1
+
+    test:
+        value: 1
+
+    hidden_dim:
+        value: 128
+    lr:
+        value: 0.001
+    n_fc:
+        value: 2
+    gru_gnn:
+        value: 2
+    pred_gnn:
+        value: 2
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 4
+

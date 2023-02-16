@@ -1,0 +1,35 @@
+program: main.py
+name: ushcn_gru_seeded
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "grud_joint"
+    dataset:
+        values:
+            - "ushcn_tmin_10nn"
+            - "ushcn_tmax_10nn"
+    seed:
+        values:
+            - 913
+            - 914
+            - 915
+            - 916
+            - 917
+    test:
+        value: 1
+
+    hidden_dim:
+        value: 512
+    lr:
+        value: 0.001
+    n_fc:
+        value: 2
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 16
+

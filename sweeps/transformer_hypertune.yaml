@@ -1,0 +1,27 @@
+program: main.py
+name: transformer_hypertune
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "transformer_node"
+    dataset:
+        values:
+            - "periodic_20_0.5_42"
+            - "bay_node_0.25"
+            - "la_node_0.25"
+
+    hidden_dim:
+        values: [64, 128, 256]
+    lr:
+        value: 0.001
+    gru_layers:
+        values: [2, 4]
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 8
+

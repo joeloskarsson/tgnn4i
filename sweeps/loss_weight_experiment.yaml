@@ -1,0 +1,43 @@
+program: main.py
+name: loss_weight_experiment
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "tgnn4i"
+    dataset:
+        value: "bay_node_0.25"
+
+    loss_weighting:
+        values:
+            - "const"
+            - "exp,0.04"
+            - "gauss,0.1,0.02"
+            - "rect,0.2,0.02"
+    max_pred:
+        value: 25
+
+    seed:
+        value: 913
+
+    test:
+        value: 1
+
+    hidden_dim:
+        value: 256
+    lr:
+        value: 0.001
+    n_fc:
+        value: 2
+    gru_gnn:
+        value: 2
+    pred_gnn:
+        value: 2
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 4
+

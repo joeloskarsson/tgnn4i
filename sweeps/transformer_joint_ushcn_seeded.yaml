@@ -1,0 +1,35 @@
+program: main.py
+name: transformer_joint_ushcn_seeded
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "transformer_joint"
+    dataset:
+        values:
+            - "ushcn_tmin_10nn"
+            - "ushcn_tmax_10nn"
+    hidden_dim:
+        value: 64
+    gru_layers:
+        value: 4
+
+    lr:
+        value: 0.001
+    epochs:
+        value: 2000
+    batch_size:
+        value: 8
+
+    test:
+        value: 1
+    seed:
+        values:
+            - 913
+            - 914
+            - 915
+            - 916
+            - 917
+

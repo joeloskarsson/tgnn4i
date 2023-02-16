@@ -1,0 +1,33 @@
+program: main.py
+name: periodic_hypertune
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        values:
+            - "tgnn4i"
+            - "grud_joint"
+            - "grud_node"
+    dataset:
+        value: "periodic_20_0.5_42"
+    periodic:
+        value: 1
+
+    hidden_dim:
+        values: [64, 128, 256]
+    lr:
+        value: 0.001
+    n_fc:
+        value: 2
+    gru_gnn:
+        value: 2
+    pred_gnn:
+        value: 2
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 16
+

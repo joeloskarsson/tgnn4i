@@ -1,0 +1,24 @@
+program: main.py
+name: ushcn_node_hypertune
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "grud_node"
+    dataset:
+        value: "ushcn_tmin_10nn"
+
+    hidden_dim:
+        values: [32, 64, 128]
+    lr:
+        value: 0.001
+    n_fc:
+        values: [1,2]
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 4
+

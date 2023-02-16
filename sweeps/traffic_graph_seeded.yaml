@@ -1,0 +1,50 @@
+program: main.py
+name: traffic_graph_seeded
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "tgnn4i"
+    dataset:
+        values:
+            - "bay_node_0.25"
+            - "bay_node_0.5"
+            - "bay_node_0.75"
+            - "bay_node_1.0"
+            - "la_node_0.25"
+            - "la_node_0.5"
+            - "la_node_0.75"
+            - "la_node_1.0"
+    seed:
+        values:
+            - 913
+            - 914
+            - 915
+            - 916
+            - 917
+    decay_type:
+        values:
+            - "dynamic"
+            - "none"
+
+    test:
+        value: 1
+
+    hidden_dim:
+        value: 256
+    lr:
+        value: 0.001
+    n_fc:
+        value: 2
+    gru_gnn:
+        value: 2
+    pred_gnn:
+        value: 2
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 8
+

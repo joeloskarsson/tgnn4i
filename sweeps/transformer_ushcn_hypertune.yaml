@@ -1,0 +1,24 @@
+program: main.py
+name: transformer_ushcn_hypertune
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "transformer_node"
+    dataset:
+        value: "ushcn_tmin_10nn"
+
+    hidden_dim:
+        values: [64, 128]
+    lr:
+        value: 0.001
+    gru_layers:
+        values: [2, 4]
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 4
+

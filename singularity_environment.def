@@ -1,0 +1,57 @@
+Bootstrap: docker
+From: nvidia/cuda:11.6.2-cudnn8-devel-ubuntu20.04
+IncludeCmd: yes
+
+%runscript
+    echo "This is what happens when you run the container..."
+    echo $PATH
+    python
+
+%environment
+    export PATH=$PATH:/opt/miniconda3/bin
+
+%post
+    echo "#################################################################"
+    echo "Updating base image and installing apt dependencies"
+    echo "#################################################################"
+    echo ""
+
+    apt -y update
+    apt -y upgrade
+    apt -y install wget libdigest-sha-perl nano git texlive-full
+    rm -rf /var/lib/apt/lists/*
+
+    echo "#################################################################"
+    echo "Install and setup Miniconda"
+    echo "#################################################################"
+    echo ""
+
+    export MINICONDA=Miniconda3-py39_4.11.0-Linux-x86_64.sh
+
+    wget https://repo.anaconda.com/miniconda/$MINICONDA -P /opt
+    shasum_conda=$(shasum -a 256 /opt/$MINICONDA  | cut -d " " -f 1)
+    target_shasum="4ee9c3aa53329cd7a63b49877c0babb49b19b7e5af29807b793a76bdb1d362b4"
+    if [ "$shasum_conda" = "$target_shasum" ]; then
+        echo "Conda shasum checks out"
+    else
+        echo "Missmatch in conda shasum"
+    fi
+
+    bash /opt/$MINICONDA -b -p /opt/miniconda3
+    export PATH=$PATH:/opt/miniconda3/bin
+    conda update conda
+    conda install pip
+
+    echo "#################################################################"
+    echo "Installing necessary python packages"
+    echo "#################################################################"
+    echo ""
+
+    conda install -y pytorch=1.11 torchvision cudatoolkit=11.3 -c pytorch
+
+    export CUDA="cu113"
+    pip install torch-scatter==2.0.9 torch-sparse==0.6.13 torch-geometric==2.0.4 torch-cluster==1.6.0 -f https://data.pyg.org/whl/torch-1.11.0+$CUDA.html
+
+    pip install matplotlib==3.5.1 numpy==1.22.3 scipy==1.8.0 wandb==0.12.11 networkx==2.7.1 torch-geometric-temporal==0.51.0 tueplots==0.0.5 protobuf==3.19.4
+
+    conda clean --all

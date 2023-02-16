@@ -1,0 +1,26 @@
+program: main.py
+name: traffic_node_hypertune
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "grud_node"
+    dataset:
+        values:
+            - "bay_node_0.25"
+            - "la_node_0.25"
+
+    hidden_dim:
+        values: [64, 128, 256]
+    lr:
+        values: [0.0005, 0.001]
+    n_fc:
+        values: [1,2]
+
+    epochs:
+        value: 2000
+    batch_size:
+        value: 8
+

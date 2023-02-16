@@ -1,0 +1,38 @@
+program: main.py
+name: transformer_joint_bay_seeded
+method: grid
+metric:
+    name: val_wmse
+    goal: minimize
+parameters:
+    model:
+        value: "transformer_joint"
+    dataset:
+        values:
+            - "bay_node_0.25"
+            - "bay_node_0.5"
+            - "bay_node_0.75"
+            - "bay_node_1.0"
+
+    hidden_dim:
+        value: 64
+    gru_layers:
+        value: 2
+
+    lr:
+        value: 0.001
+    epochs:
+        value: 2000
+    batch_size:
+        value: 8
+
+    test:
+        value: 1
+    seed:
+        values:
+            - 913
+            - 914
+            - 915
+            - 916
+            - 917
+
