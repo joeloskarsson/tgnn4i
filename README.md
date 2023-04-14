@@ -3,7 +3,7 @@
   <img src="model_illustration.png"/>
 </p>
 
-This repository contains the code for our paper [*Temporal Graph Neural Networks for Irregular Data*](https://arxiv.org/abs/2302.08415), to appear at AISTATS 2023.
+This repository contains the code for our paper [*Temporal Graph Neural Networks for Irregular Data*](https://proceedings.mlr.press/v206/oskarsson23a.html), published at AISTATS 2023.
 
 If you find our work useful, please cite:
 ```
