@@ -131,7 +131,7 @@ class DecayCell(nn.Module):
 
         r = torch.sigmoid(Wx_r + Uh_r)
         z = torch.sigmoid(Wx_z + Uh_z)
-        h_tilde = torch.tanh(Wx_r + Uh_h*r) # Shape (B, d_h)
+        h_tilde = torch.tanh(Wx_h + Uh_h*r) # Shape (B, d_h)
 
         new_h = h_decayed + z*(h_tilde - h_decayed)
 
@@ -143,7 +143,7 @@ class DecayCell(nn.Module):
 
             rd = torch.sigmoid(Wx_rd + Uh_rd)
             zd = torch.sigmoid(Wx_zd + Uh_zd)
-            hd_tilde = torch.tanh(Wx_rd + Uh_hd*rd) # Shape (B, d_h)
+            hd_tilde = torch.tanh(Wx_hd + Uh_hd*rd) # Shape (B, d_h)
 
             new_decay_target = decay_target + zd*(hd_tilde - decay_target)
 
