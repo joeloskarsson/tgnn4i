@@ -34,7 +34,7 @@ If you instead want to use a containerized setup there is also a specification f
 We provide both the complete, pre-processed datasets and instructions for running the pre-processing.
 
 ### Download datasets
-All datasets used in the paper can be downloaded from [this link](https://liuonline-my.sharepoint.com/:f:/g/personal/joeos82_liu_se/EkXmNJYB8hNBnhnSeNAoDKkBIES520vzayAtmRT-Rh_cvQ?e=Px8z8g).
+All datasets used in the paper can be downloaded from [this link](https://drive.google.com/drive/folders/1YQO4Z0M9PnGu7Ztvy0bHz8Zjpg1z8GvX?usp=sharing).
 Each dataset consists of a folder containing a specification file `config.json` and a `.pickle`-FILE WIth the actual data.
 The configuration file specifies the exact paramters used during pre-processing of the data.
 Place these folders in the `dataset` directory.
